@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello{% endblock %}
+
+{% block body %}
+    <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Navbar</a>
+            {% if is_granted ('IS_AUTHENTICATED_FULLY') %}
+            <li><code><a href="{{ path ('logout') }}">logout</a></code></li>
+            {% else %}
+            <li><code><a href="{{ path ('login') }}">login</a></code></li>
+            {% endif %}
+
+        </div>
+    </nav>
+
+    <h1 class="text-center">Welcome {{ app.user.fname }}</h1>
+    <p class="text-center">jij bent admin sukkel</p>
+    <p class="text-center"> jouw dierenland heet {{ app.user.part }}</p>
+<br><br><br>
+
+{% endblock %}

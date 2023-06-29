@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello{% endblock %}
+
+{% block body %}
+    {% if error %}
+    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Navbar</a>
+            <li><code><a href="{{ path ('login') }}">inloggen</a></code></li>
+            <li><code><a href="{{ path ('register') }}">registreren</a></code></li>
+        </div>
+    </nav>
+
+    <form action="{{ path('login') }}" method="post">
+        <label for="username">email</label>
+        <input type="text" id="username" name="_username" value="{{ last_username }}"/>
+
+        <label for="password">Password:</label>
+        <input type="text" id="password" name="_password"/>
+
+        <input type="hidden" name="_target_path" value="/redirect">
+        <button type="submit">login</button>
+    </form>
+{% endblock %}

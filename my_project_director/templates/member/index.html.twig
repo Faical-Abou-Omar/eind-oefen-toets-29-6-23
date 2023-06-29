@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello{% endblock %}
+
+{% block body %}
+    <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Navbar</a>
+            {% if is_granted ('IS_AUTHENTICATED_FULLY') %}
+            <li><code><a href="{{ path ('logout') }}">logout</a></code></li>
+            {% else %}
+            <li><code><a href="{{ path ('login') }}">login</a></code></li>
+            {% endif %}
+        </div>
+    </nav>
+
+    <h1 class="text-center">Welcome {{ app.user.fname }}</h1>
+
+
+    {% for animal in animals %}
+        <h6 class="text-center"> dier name: {{ animal.name }}</h6>
+        <h6 class="text-center"> beschrijving: {{ animal.description }}</h6>
+        <h6 class="text-center"> land name : {{ animal.user.part}}</h6> <br>
+    {% endfor %}
+
+{% endblock %}
